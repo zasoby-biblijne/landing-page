@@ -1,265 +1,265 @@
 <!DOCTYPE html>
 
 <html lang="pl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex" />
 
-    <link rel="icon" type="image/png" href="https://i.imgur.com/j1i1XJ6.png" />
-    <title>Zasoby biblijne</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+  <link rel="icon" type="image/png" href="https://i.imgur.com/j1i1XJ6.png" />
+  <title>Zasoby biblijne</title>
 
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
 
-        ::selection {
-          background-color: #004040;
-          color: #f9f9f9;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+
+      ::selection {
+        background-color: #004040;
+        color: #f9f9f9;
       }
+    }
 
-      html,
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      position: relative;
+      padding: 64px 128px;
+      display: flex;
+      flex-direction: column;
+      font-family: "Inter", Sans-serif;
+      color: #313131;
+      background: linear-gradient(to bottom, #edebe8, #f9f9f9);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-family: "Abhaya Libre", Sans-serif;
+      font-weight: 900;
+      font-size: 52px;
+      line-height: 40px;
+    }
+
+    .verse {
+      margin-bottom: 30px;
+      max-width: 800px;
+      font-style: italic;
+      font-family: "Abhaya Libre", Sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .verse span {
+      margin-left: 3px;
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    ul {
+      margin-top: 20px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      list-style: none;
+    }
+
+    li {
+      display: inline-flex;
+      gap: 8px;
+      font-size: 16px;
+    }
+
+    li::before {
+      content: "•";
+      color: #313131;
+    }
+
+    a {
+      position: relative;
+      color: unset;
+      text-decoration: none;
+      display: inline-flex;
+      gap: 8px;
+    }
+
+    a:after {
+      content: " ↗";
+      z-index: 1;
+      position: relative;
+      bottom: 1.5px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    a:hover:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      bottom: -1px;
+      left: 0;
+      background-color: #313131;
+    }
+
+    .decorative-arcs {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .arc {
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .arc-1 {
+      width: 800px;
+      aspect-ratio: 1;
+      background: linear-gradient(to top, #131b2a 50%, #467272 100%);
+      bottom: -400px;
+      right: -400px;
+    }
+
+    .arc-2 {
+      width: 360px;
+      aspect-ratio: 1;
+      background-color: #648a8a;
+      bottom: -180px;
+      right: 420px;
+    }
+
+    .arc-3 {
+      z-index: 1;
+      width: 400px;
+      aspect-ratio: 1;
+      background-color: #dedad5;
+      background: linear-gradient(to top, #dfdbd6 50%, #d3cec7 100%);
+      bottom: -200px;
+      right: 450px;
+      border: 13px solid #f7f7f6;
+    }
+
+    @media (max-width: 1024px) {
       body {
-        height: 100%;
-        overflow: hidden;
+        padding: 64px 64px;
       }
+    }
 
-      body {
-        position: relative;
-        padding: 64px 128px;
-        display: flex;
-        flex-direction: column;
-        font-family: "Inter", Sans-serif;
-        color: #313131;
-        background: linear-gradient(to bottom, #edebe8, #f9f9f9);
-      }
-
-      h1 {
-        margin-bottom: 20px;
-        font-family: "Abhaya Libre", Sans-serif;
-        font-weight: 900;
-        font-size: 52px;
-        line-height: 40px;
-      }
-
-      .verse {
-        margin-bottom: 30px;
-        max-width: 800px;
-        font-style: italic;
-        font-family: "Abhaya Libre", Sans-serif;
-        font-size: 20px;
-        font-weight: 800;
-      }
-
-      .verse span {
-        margin-left: 3px;
-        font-style: normal;
-        font-weight: 700;
-      }
-
-      ul {
-        margin-top: 20px;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        list-style: none;
-      }
-
-      li {
-        display: inline-flex;
-        gap: 8px;
-        font-size: 16px;
-      }
-
-      li::before {
-        content: "•";
-        color: #313131;
-      }
-
-      a {
-        position: relative;
-        color: unset;
-        text-decoration: none;
-        display: inline-flex;
-        gap: 8px;
-      }
-
-      a:after {
-        content: " ↗";
-        z-index: 1;
-        position: relative;
-        bottom: 1.5px;
-        font-size: 14px;
-        font-weight: bold;
-      }
-
-      a:hover:before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 1px;
-        bottom: -1px;
-        left: 0;
-        background-color: #313131;
-      }
-
-      .decorative-arcs {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        overflow: hidden;
-      }
-
-      .arc {
-        position: absolute;
-        border-radius: 50%;
-      }
-
+    @media (max-width: 768px) {
       .arc-1 {
-        width: 800px;
-        aspect-ratio: 1;
-        background: linear-gradient(to top, #131b2a 50%, #467272 100%);
-        bottom: -400px;
-        right: -400px;
+        width: 110vw;
+        bottom: -55vw;
+        right: -55vw;
       }
 
       .arc-2 {
-        width: 360px;
-        aspect-ratio: 1;
-        background-color: #648a8a;
-        bottom: -180px;
-        right: 420px;
+        width: 64vw;
+        bottom: -32vw;
+        right: 58vw;
       }
 
       .arc-3 {
         z-index: 1;
-        width: 400px;
-        aspect-ratio: 1;
-        background-color: #dedad5;
-        background: linear-gradient(to top, #dfdbd6 50%, #d3cec7 100%);
-        bottom: -200px;
-        right: 450px;
-        border: 13px solid #f7f7f6;
+        width: 72vw;
+        bottom: -36vw;
+        right: 63vw;
+        border: 2.5vw solid #f7f7f6;
+      }
+    }
+
+    @media (max-width: 425px) {
+      body {
+        padding: 48px 48px;
       }
 
-      @media (max-width: 1024px) {
-        body {
-          padding: 64px 64px;
-        }
+      ul {
+        gap: 10px;
       }
 
-      @media (max-width: 768px) {
-        .arc-1 {
-          width: 110vw;
-          bottom: -55vw;
-          right: -55vw;
-        }
-
-        .arc-2 {
-          width: 64vw;
-          bottom: -32vw;
-          right: 58vw;
-        }
-
-        .arc-3 {
-          z-index: 1;
-          width: 72vw;
-          bottom: -36vw;
-          right: 63vw;
-          border: 2.5vw solid #f7f7f6;
-        }
+      li {
+        font-size: 16px;
       }
+    }
+  </style>
+</head>
 
-      @media (max-width: 425px) {
-        body {
-          padding: 48px 48px;
-        }
+<body>
+  <h1>Zasoby biblijne</h1>
 
-        ul {
-          gap: 10px;
-        }
+  <p class="verse">
+    Całe Pismo przez Boga jest natchnione i pożyteczne do nauki, do wykrywania
+    błędów, do poprawy, do wychowywania w sprawiedliwości, aby człowiek Boży
+    był doskonały, do wszelkiego dobrego dzieła przygotowany.
+    <span>2 Tym. 3:16,17</span>
+  </p>
 
-        li {
-          font-size: 16px;
-        }
-      }
-    </style>
-  </head>
+  <p>Poniżej znajdziesz zbiór przydatnych linków do zasobów biblijnych:</p>
 
-  <body>
-    <h1>Zasoby biblijne</h1>
+  <ul>
+    <li>
+      <a href="https://wykladybiblijne.org" target="_blank">
+        <p>Wykłady biblijne</p>
+      </a>
+    </li>
+    <li>
+      <a href="https://spiewniki.klalo.pl" target="_blank">
+        <p>Śpiewniki</p>
+      </a>
+    </li>
+    <li>
+      <a href="https://nastrazy.org" target="_blank">
+        <p>Na Straży</p>
+      </a>
+    </li>
+    <li>
+      <a href="https://nastrazy.pl" target="_blank">
+        <p>Archiwum Nastraży</p>
+      </a>
+    </li>
+    <li>
+      <a href="https://dabhar.org" target="_blank">
+        <p>Dabhar</p>
+      </a>
+    </li>
+    <li>
+      <a href="https://zbawienie.pl" target="_blank">
+        <p>Zbawienie.pl</p>
+      </a>
+    </li>
+  </ul>
 
-    <p class="verse">
-      Całe Pismo przez Boga jest natchnione i pożyteczne do nauki, do wykrywania
-      błędów, do poprawy, do wychowywania w sprawiedliwości, aby człowiek Boży
-      był doskonały, do wszelkiego dobrego dzieła przygotowany.
-      <span>2 Tym. 3:16,17</span>
-    </p>
+  <div class="decorative-arcs">
+    <div class="arc arc-1"></div>
+    <div class="arc arc-2"></div>
+    <div class="arc arc-3"></div>
+  </div>
 
-    <p>Poniżej znajdziesz zbiór przydatnych linków do zasobów biblijnych:</p>
-
-    <ul>
-      <li>
-        <a href="https://wykladybiblijne.org" target="_blank">
-          <p>Wykłady biblijne</p>
-        </a>
-      </li>
-      <li>
-        <a href="https://spiewniki.klalo.pl" target="_blank">
-          <p>Śpiewniki</p>
-        </a>
-      </li>
-      <li>
-        <a href="https://nastrazy.org" target="_blank">
-          <p>Na Straży</p>
-        </a>
-      </li>
-      <li>
-        <a href="https://nastrazy.pl" target="_blank">
-          <p>Archiwum Nastraży</p>
-        </a>
-      </li>
-      <li>
-        <a href="https://dabhar.org" target="_blank">
-          <p>Dabhar</p>
-        </a>
-      </li>
-      <li>
-        <a href="https://zbawienie.pl" target="_blank">
-          <p>Zbawienie.pl</p>
-        </a>
-      </li>
-    </ul>
-
-    <div class="decorative-arcs">
-      <div class="arc arc-1"></div>
-      <div class="arc arc-2"></div>
-      <div class="arc arc-3"></div>
-    </div>
-
-    <!-- <footer>
+  <!-- <footer>
       <p>
         Zrzeszenie Wolnych Badaczy Pisma Świętego w Polsce &copy;
         <span id="year"></span>
       </p>
     </footer> -->
 
-    <script>
-      // document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-  </body>
+  <script>
+    // document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+
 </html>

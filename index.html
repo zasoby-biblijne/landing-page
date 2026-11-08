@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Zasoby biblijne</title>
   <meta name="description"
-    content="Zasoby biblijne to strona, która ma na celu pomoc w studiowaniu Pisma Świętego. Znajdziesz tu materiały do nauki, komentarze, artykuły i wiele innych zasobów." />
+    content="Materiały do studiowania Pisma Świętego, polecane serwisy internetowe, zagraniczne źródła wiedzy oraz aplikacje mobilne." />
   <meta name="robots" content="noindex" />
   <meta name="theme-color" content="#004040" />
   <link rel="icon" type="image/svg+xml"
@@ -88,8 +88,8 @@
       align-items: center;
       gap: 12px;
       color: var(--display);
-      font-size: 19px;
-      font-weight: 700;
+      font-size: 21px;
+      font-weight: 900;
     }
 
     .brand-icon {
@@ -97,16 +97,6 @@
       height: 40px;
       flex-shrink: 0;
       color: var(--brand);
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 5px 12px;
-      border-radius: 999px;
-      background: #ccd9d9;
-      color: var(--brand);
-      font-size: 12px;
-      font-weight: 600;
     }
 
     main {
@@ -141,15 +131,6 @@
       max-width: 720px;
     }
 
-    .eyebrow {
-      margin: 0 0 12px;
-      color: var(--brand);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
     h1,
     h2 {
       color: var(--display);
@@ -173,26 +154,14 @@
       line-height: 1.6;
     }
 
-    .button {
-      display: inline-flex;
-      min-height: 44px;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 11px 20px;
-      border-radius: 10px;
-      background: var(--brand);
-      color: #fff;
-      font-weight: 600;
-      text-align: center;
-    }
-
-    .button:hover {
-      background: #002f2f;
-    }
-
     .resources {
       padding-top: 28px;
+    }
+
+    .resources+.resources {
+      margin-top: 32px;
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
     }
 
     h2 {
@@ -231,12 +200,15 @@
       background: #fff;
       transition:
         border-color 150ms ease,
-        background-color 150ms ease;
+        background-color 150ms ease,
+        box-shadow 220ms ease,
+        transform 220ms ease;
     }
 
     .resource:hover {
       border-color: #9fb9b9;
       background: var(--muted);
+      box-shadow: 0 6px 18px rgb(15 23 42 / 8%);
     }
 
     .resource-content {
@@ -245,16 +217,66 @@
     }
 
     .resource h3 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       margin: 0 0 6px;
       color: var(--display);
       font-size: 17px;
       line-height: 1.4;
     }
 
+    .resource-icon-wrap {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 1px 3px rgb(15 23 42 / 12%);
+    }
+
+    .resource-icon-image {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+    }
+
+    .resource-icon-app {
+      width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+      border-radius: 11px;
+      object-fit: cover;
+    }
+
+    .resource-icon-fallback {
+      display: none;
+      width: 24px;
+      height: 24px;
+      color: var(--secondary);
+      opacity: 0.28;
+    }
+
+    .resource-icon-wrap.is-missing .resource-icon-fallback {
+      display: block;
+    }
+
     .resource p {
+      display: -webkit-box;
+      height: 3em;
+      max-width: 430px;
       margin: 0 0 12px;
       color: var(--secondary);
       font-size: 14px;
+      line-height: 1.5;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
     }
 
     .domain {
@@ -267,42 +289,11 @@
       flex-shrink: 0;
       font-size: 21px;
       line-height: 1.2;
+      transition: transform 220ms ease;
     }
 
-    .note {
-      margin-top: 28px;
-      padding: 20px 24px;
-      border-radius: 16px;
-      background: var(--muted);
-      color: var(--secondary);
-      font-size: 14px;
-    }
-
-    .note p {
-      margin: 0;
-    }
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding-block: 22px;
-      color: var(--secondary);
-      font-size: 13px;
-    }
-
-    .footer-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    footer p {
-      margin: 0;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
+    .resource:hover .arrow {
+      transform: translate(3px, -3px);
     }
 
     @media (max-width: 680px) {
@@ -328,12 +319,16 @@
         font-size: 15px;
       }
 
-      .resource-list {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
       .resource {
         padding: 20px;
+      }
+
+      .resource p {
+        display: block;
+        height: auto;
+        overflow: visible;
+        line-clamp: unset;
+        -webkit-line-clamp: unset;
       }
 
       h2 {
@@ -341,14 +336,16 @@
       }
     }
 
-    @media (max-width: 420px) {
-      .topbar .badge {
-        display: none;
+    @media (max-width: 900px) {
+      .resource-list {
+        grid-template-columns: minmax(0, 1fr);
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .resource {
+
+      .resource,
+      .arrow {
         transition: none;
       }
     }
@@ -377,111 +374,102 @@
         </svg>
         <span>Zasoby biblijne</span>
       </a>
-      <span class="badge">Ekran awaryjny</span>
     </div>
   </header>
 
   <main class="container" id="main">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-content">
-        <p class="eyebrow">Zasoby do studiowania Pisma Świętego</p>
-        <h1 id="hero-title">Dobre źródła są zawsze blisko.</h1>
+        <h1 id="hero-title">Materiały do studiowania Pisma Świętego.</h1>
         <p class="lede">
-          To ekran awaryjny Zasobów biblijnych. Jeśli główny serwis jest
-          chwilowo niedostępny, możesz nadal korzystać z polecanych
-          materiałów. Spróbuj wrócić do aplikacji lub wybierz jedną ze stron
-          poniżej.
+          Zbiór materiałów do studium Biblii oraz odnośników do wybranych
+          serwisów, zagranicznych źródeł i aplikacji mobilnych.
         </p>
-        <a class="button" href="https://zasobybiblijne.org" target="_blank" rel="noopener noreferrer">
-          Otwórz Zasoby biblijne <span aria-hidden="true">↗</span>
-        </a>
       </div>
     </section>
 
-    <section class="resources" aria-labelledby="resources-title">
-      <h2 id="resources-title">Polecane strony</h2>
+    <section class="resources" aria-labelledby="apps-title">
+      <h2 id="apps-title">Polecane aplikacje mobilne</h2>
       <p class="section-lede">
-        Wykłady, publikacje, pieśni i rozważania — materiały, które mogą pomóc
-        w osobistym studiowaniu Biblii. Każdy link otwiera stronę w nowej
-        karcie.
+        Narzędzia mobilne do lektury Biblii, publikacji i codziennych
+        rozważań.
       </p>
+
       <ul class="resource-list">
         <li>
-          <a class="resource" href="https://wykladybiblijne.org" target="_blank" rel="noopener noreferrer">
+          <a class="resource" href="https://play.google.com/store/apps/details?id=com.ChristianResources"
+            target="_blank" rel="noopener noreferrer">
             <div class="resource-content">
-              <h3>Wykłady biblijne</h3>
+              <h3>
+                <span class="resource-icon-wrap" aria-hidden="true">
+                  <img class="resource-icon-image resource-icon-app"
+                    src="https://play-lh.googleusercontent.com/Z_yLIbiKiEOCOp5qGgBllWEcOe1vl0eC5kpoT7F1OOxrg-NNk2tr06AVZYQGKfIr4atDG6ITiS8lTux7C9yMMQ=s0-br30"
+                    alt="" loading="lazy" decoding="async" />
+                  <svg class="resource-icon-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.5" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+                  </svg>
+                </span>
+                <span>Christian Resources</span>
+              </h3>
               <p>
-                Wykłady i nagrania pomocne w poznawaniu i studiowaniu Biblii.
+                Biblia, komentarze i książki do studium, a także codzienne
+                teksty, pieśni, kazania oraz nagrania audio i wideo.
               </p>
-              <span class="domain">wykladybiblijne.org</span>
             </div>
             <span class="arrow" aria-hidden="true">↗</span>
           </a>
         </li>
+
         <li>
-          <a class="resource" href="https://spiewniki.klalo.pl" target="_blank" rel="noopener noreferrer">
+          <a class="resource"
+            href="https://play.google.com/store/apps/details?id=pabloawesomesoftware.literaturabiblijna" target="_blank"
+            rel="noopener noreferrer">
             <div class="resource-content">
-              <h3>Śpiewniki</h3>
+              <h3>
+                <span class="resource-icon-wrap" aria-hidden="true">
+                  <img class="resource-icon-image resource-icon-app"
+                    src="https://play-lh.googleusercontent.com/dsx7cEa1BnjMm1O3wiTSDtG2OigV4metGvvs7gZ4lLpcgzv-ejynd5Nbd50oeA_APkZnemF_m7Vd1zOuud1L=s0-br30"
+                    alt="" loading="lazy" decoding="async" />
+                  <svg class="resource-icon-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.5" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+                  </svg>
+                </span>
+                <span>Literatura biblijna</span>
+              </h3>
               <p>
-                Pieśni i śpiewniki do wspólnego śpiewania oraz osobistego
-                użytku.
+                Czytaj i wyszukuj tomy wykładów, czasopisma oraz książki;
+                dodawaj notatki i zaznaczaj treści.
               </p>
-              <span class="domain">spiewniki.klalo.pl</span>
             </div>
             <span class="arrow" aria-hidden="true">↗</span>
           </a>
         </li>
+
         <li>
-          <a class="resource" href="https://nastrazy.org" target="_blank" rel="noopener noreferrer">
+          <a class="resource" href="https://play.google.com/store/apps/details?id=info.szarkowicz.mannaniebianska"
+            target="_blank" rel="noopener noreferrer">
             <div class="resource-content">
-              <h3>Na Straży</h3>
-              <p>Artykuły, rozważania i publikacje czasopisma „Na Straży”.</p>
-              <span class="domain">nastrazy.org</span>
-            </div>
-            <span class="arrow" aria-hidden="true">↗</span>
-          </a>
-        </li>
-        <li>
-          <a class="resource" href="https://nastrazy.pl" target="_blank" rel="noopener noreferrer">
-            <div class="resource-content">
-              <h3>Archiwum „Na Straży”</h3>
+              <h3>
+                <span class="resource-icon-wrap" aria-hidden="true">
+                  <img class="resource-icon-image resource-icon-app"
+                    src="https://play-lh.googleusercontent.com/3bZ3ZwKbK8jrAP1w6QixM4NhXebrbxIC2hBdVOVGDHtJqVQz70Vx-ubrfdrMF8xOR7BhhL-8cQexp31OwG61=s0-br30"
+                    alt="" loading="lazy" decoding="async" />
+                  <svg class="resource-icon-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.5" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+                  </svg>
+                </span>
+                <span>Niebiańska manna</span>
+              </h3>
               <p>
-                Archiwalne materiały i publikacje do dalszego studiowania.
+                Werset biblijny na każdy dzień roku wraz z krótkim fragmentem
+                artykułu z czasopisma „The Watch Tower”.
               </p>
-              <span class="domain">nastrazy.pl</span>
-            </div>
-            <span class="arrow" aria-hidden="true">↗</span>
-          </a>
-        </li>
-        <li>
-          <a class="resource" href="https://zbawienie.pl" target="_blank" rel="noopener noreferrer">
-            <div class="resource-content">
-              <h3>Zbawienie.pl</h3>
-              <p>Artykuły i rozważania poświęcone zagadnieniom biblijnym.</p>
-              <span class="domain">zbawienie.pl</span>
-            </div>
-            <span class="arrow" aria-hidden="true">↗</span>
-          </a>
-        </li>
-        <li>
-          <a class="resource" href="https://www.pastorrussell.pl" target="_blank" rel="noopener noreferrer">
-            <div class="resource-content">
-              <h3>Pastor Russell</h3>
-              <p>
-                Publikacje i materiały historyczne związane z Pastorem
-                Russellem.
-              </p>
-              <span class="domain">pastorrussell.pl</span>
-            </div>
-            <span class="arrow" aria-hidden="true">↗</span>
-          </a>
-        </li>
-        <li>
-          <a class="resource" href="https://dabhar.org" target="_blank" rel="noopener noreferrer">
-            <div class="resource-content">
-              <h3>Dabhar</h3>
-              <p>Materiały pomocne w uważnym studiowaniu Pisma Świętego.</p>
-              <span class="domain">dabhar.org</span>
             </div>
             <span class="arrow" aria-hidden="true">↗</span>
           </a>
@@ -489,27 +477,344 @@
       </ul>
     </section>
 
-    <aside class="note" aria-label="O projekcie">
-      <p>
-        <strong>Zasoby biblijne</strong> łączą książki, czasopisma i artykuły
-        z wyszukiwaniem, rodowodami, śpiewnikami oraz rozmyślaniami na każdy
-        dzień. Serwis działa na telefonach, tabletach i komputerach.
-        Aplikacja mobilna na Androida i iOS wyświetla ten sam serwis i wymaga
-        internetu; jej przygotowanie nie oznacza jeszcze publikacji w sklepach.
-        Polecane strony są niezależnymi źródłami — ich dostępność i treść
-        zależą od ich autorów.
+    <section class="resources" aria-labelledby="resources-title">
+      <h2 id="resources-title">Polecane strony internetowe</h2>
+      <p class="section-lede">
+        Serwisy z publikacjami, opracowaniami, wykładami, nagraniami i
+        śpiewnikami przydatnymi w studiowaniu Biblii.
       </p>
-    </aside>
+
+      <ul class="resource-list">
+        <li>
+          <a class="resource" href="https://nastrazy.org" target="_blank" rel="noopener noreferrer">
+            <div class="resource-content">
+              <h3>
+                <span class="resource-icon-wrap" aria-hidden="true">
+                  <img class="resource-icon-image"
+                    src="https://www.google.com/s2/favicons?domain_url=https://nastrazy.org&amp;sz=64" alt=""
+                    loading="lazy" decoding="async" />
+                  <svg class="resource-icon-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.5" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+                  </svg>
+                </span>
+                <span>Na Straży</span>
+              </h3>
+              <p>
+                Artykuły, nagrania wykładów i pieśni oraz numery czasopism „Na
+                Straży”, „Wędrówka” i „The Herald”.
+              </p>
+              <span class="domain">nastrazy.org</span>
+            </div>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="resource" href="https://nastrazy.pl" target="_blank" rel="noopener noreferrer">
+            <div class="resource-content">
+              <h3>
+                <span class="resource-icon-wrap is-missing" aria-hidden="true">
+                  <svg class="resource-icon-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.5" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+                  </svg>
+                </span>
+                <span>Archiwum „Na Straży”</span>
+              </h3>
+              <p>
+                Archiwum „Na Straży” obejmuje publikacje C. T. Russella i
+                artykuły z „The Watch Tower”.
+              </p>
+              <span class="domain">nastrazy.pl</span>
+            </div>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="resource" href="https://wydawnictwostraz.org" target="_blank" rel="noopener noreferrer">
+            <div class="resource-content">
+              <h3>
+                <span class="resource-icon-wrap" aria-hidden="true">
+                  <img class="resource-icon-image"
+                    src="https://www.google.com/s2/favicons?domain_url=https://wydawnictwostraz.org&amp;sz=64" alt=""
+                    loading="lazy" decoding="async" />
+                  <svg class="resource-icon-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.5" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+                  </svg>
+                </span>
+                <span>Wydawnictwo Straż</span>
+              </h3>
+              <p>
+                Czasopismo „Straż” publikuje teksty C. T. Russella i polskie
+                przekłady z „The Watch Tower”.
+              </p>
+              <span class="domain">wydawnictwostraz.org</span>
+            </div>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="resource" href="https://wykladybiblijne.org" target="_blank" rel="noopener noreferrer">
+            <div class="resource-content">
+              <h3>
+                <span class="resource-icon-wrap" aria-hidden="true">
+                  <img class="resource-icon-image"
+                    src="https://www.google.com/s2/favicons?domain_url=https://wykladybiblijne.org&amp;sz=64" alt=""
+                    loading="lazy" decoding="async" />
+                  <svg class="resource-icon-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.5" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+                  </svg>
+                </span>
+                <span>Wykłady biblijne</span>
+              </h3>
+              <p>
+                Wykłady ze Słowa Bożego w formie nagrań audio wspierają
+                systematyczne poznawanie Biblii.
+              </p>
+              <span class="domain">wykladybiblijne.org</span>
+            </div>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="resource" href="https://spiewniki.klalo.pl" target="_blank" rel="noopener noreferrer">
+            <div class="resource-content">
+              <h3>
+                <span class="resource-icon-wrap" aria-hidden="true">
+                  <img class="resource-icon-image"
+                    src="https://www.google.com/s2/favicons?domain_url=https://spiewniki.klalo.pl&amp;sz=64" alt=""
+                    loading="lazy" decoding="async" />
+                  <svg class="resource-icon-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.5" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+                  </svg>
+                </span>
+                <span>Śpiewniki</span>
+              </h3>
+              <p>
+                Zebrane śpiewniki i pieśni religijne, w tym zbiory Brzasku
+                Tysiąclecia oraz „Śpiewajcie Panu Pieśń Nową”.
+              </p>
+              <span class="domain">spiewniki.klalo.pl</span>
+            </div>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="resource" href="https://bpsw.pl" target="_blank" rel="noopener noreferrer">
+            <div class="resource-content">
+              <h3>
+                <span class="resource-icon-wrap is-missing" aria-hidden="true">
+                  <svg class="resource-icon-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.5" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+                  </svg>
+                </span>
+                <span>BPSW – Badacze Pisma Świętego</span>
+              </h3>
+              <p>
+                Publikacje, nagrania wykładów i konwencji oraz materiały do
+                samodzielnego badania Biblii.
+              </p>
+              <span class="domain">bpsw.pl</span>
+            </div>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="resource" href="https://www.pastorrussell.pl" target="_blank" rel="noopener noreferrer">
+            <div class="resource-content">
+              <h3>
+                <span class="resource-icon-wrap" aria-hidden="true">
+                  <img class="resource-icon-image"
+                    src="https://www.google.com/s2/favicons?domain_url=https://pastorrussell.pl&amp;sz=64" alt=""
+                    loading="lazy" decoding="async" />
+                  <svg class="resource-icon-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.5" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+                  </svg>
+                </span>
+                <span>Pastor Russell</span>
+              </h3>
+              <p>
+                Życiorys, nauki, książki, artykuły, kazania i multimedia
+                poświęcone Charlesowi Taze’owi Russellowi.
+              </p>
+              <span class="domain">pastorrussell.pl</span>
+            </div>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="resource" href="https://dabhar.org" target="_blank" rel="noopener noreferrer">
+            <div class="resource-content">
+              <h3>
+                <span class="resource-icon-wrap is-missing" aria-hidden="true">
+                  <svg class="resource-icon-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.5" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+                  </svg>
+                </span>
+                <span>Dabhar</span>
+              </h3>
+              <p>
+                Nagrania wykładów biblijnych, artykuły, archiwalne publikacje
+                oraz pieśni i śpiewniki z nagraniami.
+              </p>
+              <span class="domain">dabhar.org</span>
+            </div>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="resource" href="https://zbawienie.pl" target="_blank" rel="noopener noreferrer">
+            <div class="resource-content">
+              <h3>
+                <span class="resource-icon-wrap" aria-hidden="true">
+                  <img class="resource-icon-image"
+                    src="https://www.google.com/s2/favicons?domain_url=https://zbawienie.pl&amp;sz=64" alt=""
+                    loading="lazy" decoding="async" />
+                  <svg class="resource-icon-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.5" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+                  </svg>
+                </span>
+                <span>Zbawienie.pl</span>
+              </h3>
+              <p>
+                Artykuły i multimedia o biblijnym planie zbawienia, wierze,
+                proroctwach i życiu chrześcijańskim.
+              </p>
+              <span class="domain">zbawienie.pl</span>
+            </div>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resources" aria-labelledby="partners-title">
+      <h2 id="partners-title">Zagraniczne źródła biblijne</h2>
+      <p class="section-lede">
+        Polecane zagraniczne serwisy, z którymi współpracujemy, dzieląc się
+        wiedzą i doświadczeniem oraz materiałami biblijnymi.
+      </p>
+
+      <ul class="resource-list">
+        <li>
+          <a class="resource" href="https://chicagobible.org" target="_blank" rel="noopener noreferrer">
+            <div class="resource-content">
+              <h3>
+                <span class="resource-icon-wrap" aria-hidden="true">
+                  <img class="resource-icon-image"
+                    src="https://www.google.com/s2/favicons?domain_url=https://chicagobible.org&amp;sz=64" alt=""
+                    loading="lazy" decoding="async" />
+                  <svg class="resource-icon-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.5" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+                  </svg>
+                </span>
+                <span>Chicago Bible Students</span>
+              </h3>
+              <p>
+                Artykuły biblijne, bezpłatna biblioteka książek i komentarzy
+                oraz ponad 2000 kazań audio i wideo.
+              </p>
+              <span class="domain">chicagobible.org</span>
+            </div>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="resource" href="https://bibletude.fr" target="_blank" rel="noopener noreferrer">
+            <div class="resource-content">
+              <h3>
+                <span class="resource-icon-wrap" aria-hidden="true">
+                  <img class="resource-icon-image"
+                    src="https://www.google.com/s2/favicons?domain_url=https://bibletude.fr&amp;sz=64" alt=""
+                    loading="lazy" decoding="async" />
+                  <svg class="resource-icon-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.5" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+                  </svg>
+                </span>
+                <span>Bibletude</span>
+              </h3>
+              <p>
+                Francuskojęzyczny serwis z codzienną manną, pieśniami,
+                wykładami biblijnymi, publikacjami i tomami.
+              </p>
+              <span class="domain">bibletude.fr</span>
+            </div>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="resource" href="https://icbiblestudents.org" target="_blank" rel="noopener noreferrer">
+            <div class="resource-content">
+              <h3>
+                <span class="resource-icon-wrap" aria-hidden="true">
+                  <img class="resource-icon-image"
+                    src="https://www.google.com/s2/favicons?domain_url=https://icbiblestudents.org&amp;sz=64" alt=""
+                    loading="lazy" decoding="async" />
+                  <svg class="resource-icon-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.5" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+                  </svg>
+                </span>
+                <span>International Bible Students</span>
+              </h3>
+              <p>
+                Serwis międzynarodowych Badaczy Pisma Świętego z materiałami i
+                opracowaniami biblijnymi.
+              </p>
+              <span class="domain">icbiblestudents.org</span>
+            </div>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+      </ul>
+    </section>
   </main>
 
-  <footer>
-    <div class="container footer-content">
-      <p>Zasoby biblijne · Materiały do studiowania Pisma Świętego</p>
-      <a href="https://github.com/zasoby-biblijne" target="_blank" rel="noopener noreferrer">
-        Projekt na GitHub <span aria-hidden="true">↗</span>
-      </a>
-    </div>
-  </footer>
+  <script>
+    document.querySelectorAll(".resource-icon-image").forEach((image) => {
+      const showFallback = () => {
+        image.hidden = true;
+        image.closest(".resource-icon-wrap").classList.add("is-missing");
+      };
+
+      image.addEventListener("error", showFallback, { once: true });
+
+      if (image.complete && image.naturalWidth === 0) {
+        showFallback();
+      }
+    });
+  </script>
 </body>
 
 </html>
